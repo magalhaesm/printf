@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spec_percent.c                                     :+:      :+:    :+:   */
+/*   type_unsigned.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 07:09:07 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 16:42:56 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/13 07:01:41 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/15 13:05:41 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	spec_percent(t_spec_info *spec)
+void	spec_unsigned(t_spec_info *spec)
 {
-	spec->code = '%';
+	if (spec->sign || spec->space || spec->alt)
+		spec->error = TRUE;
+	spec->code = 'u';
 }

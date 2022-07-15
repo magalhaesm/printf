@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spec_upper_x.c                                     :+:      :+:    :+:   */
+/*   type_char.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 07:05:08 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 13:57:39 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/13 06:46:55 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/15 13:03:52 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	spec_upper_hex(t_spec_info *spec)
+void	spec_char(t_spec_info *spec)
 {
-	if (spec->sign || spec->space)
+	if (spec->pad == '0' || spec->sign || spec->space
+		|| spec->alt || spec->prec)
 		spec->error = TRUE;
-	spec->code = 'H';
+	spec->code = 'c';
 }

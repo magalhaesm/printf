@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 13:27:18 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:53:59 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef enum e_bool {
 	FALSE = 0
 }	t_bool;
 
-// TODO: mudar left para j_left
 typedef struct s_spec_info {
 	char		code;
 	char		pad;
@@ -42,7 +41,5 @@ typedef struct s_spec_info {
 }	t_spec_info;
 
 int		ft_printf(const char *format, ...);
-int		read_nbr(const char **format);
-void	clean_spec(t_spec_info *spec);
 
 #endif

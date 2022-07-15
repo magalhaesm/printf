@@ -6,13 +6,13 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:19 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 11:21:29 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:31:19 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	justify_left(t_spec_info *spec)
+void	left_justify(t_spec_info *spec)
 {
 	if (spec->pad == '0' || spec->left)
 		spec->error = TRUE;
@@ -34,7 +34,7 @@ void	space(t_spec_info *spec)
 	spec->space = TRUE;
 }
 
-void	sharp(t_spec_info *spec)
+void	hash(t_spec_info *spec)
 {
 	spec->alt = TRUE;
 }

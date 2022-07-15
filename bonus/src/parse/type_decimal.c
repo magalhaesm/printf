@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spec_s.c                                           :+:      :+:    :+:   */
+/*   type_decimal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 06:58:29 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 13:43:05 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/13 07:00:03 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/15 13:04:06 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	spec_string(t_spec_info *spec)
+void	spec_decimal(t_spec_info *spec)
 {
-	if (spec->sign || spec->space || spec->alt)
+	if (spec->alt || (spec->pad == '0' && spec->prec))
 		spec->error = TRUE;
-	spec->code = 's';
+	spec->code = 'd';
 }

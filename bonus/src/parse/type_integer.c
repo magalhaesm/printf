@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spec_p.c                                           :+:      :+:    :+:   */
+/*   type_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 06:59:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/14 13:48:32 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/13 07:01:05 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/15 13:04:23 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	spec_pointer(t_spec_info *spec)
+void	spec_integer(t_spec_info *spec)
 {
-	if (spec->sign || spec->space || spec->alt || spec->prec)
+	if (spec->alt || (spec->pad == '0' && spec->prec))
 		spec->error = TRUE;
-	spec->code = 'p';
+	spec->code = 'i';
 }
