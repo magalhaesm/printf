@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 13:03:37 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:39:49 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	clean_spec(t_spec_info *spec)
 	spec->alt = FALSE;
 	spec->width = FALSE;
 	spec->prec = FALSE;
+	spec->prefix_size = 0;
+	spec->is_positive = FALSE;
 	spec->error = FALSE;
 }
 

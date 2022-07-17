@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_unsigned.c                                    :+:      :+:    :+:   */
+/*   out_unsigned.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 07:01:41 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/17 17:23:59 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/17 17:42:25 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
+#include "../../include/printer.h"
 
-void	spec_unsigned(t_spec_info *spec)
+int	out_unsigned(t_spec_info *spec, va_list args)
 {
-	if (spec->sign || spec->space || spec->alt || spec->pad == '0')
-		spec->error = TRUE;
-	spec->code = 'u';
+	unsigned int	nbr;
+	char			*u_nbr;
+	int				written;
+
+	nbr = va_arg(args, unsigned int);
+	u_nbr = ux_toa(nbr, DECIMAL);
+	written = dispatcher(u_nbr, spec, ft_strlen(u_nbr));
+	free(u_nbr);
+	return (written);
 }

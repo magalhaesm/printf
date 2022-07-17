@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:42:36 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 13:34:01 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/16 10:53:51 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../include/printer.h"
 #include "../include/utils.h"
 
-int	ft_vprintf(const char *format, va_list args);
+static int	ft_vprintf(const char *format, va_list args);
 
 int	ft_printf(const char *format, ...)
 {
@@ -28,7 +28,7 @@ int	ft_printf(const char *format, ...)
 	return (written);
 }
 
-int	ft_vprintf(const char *format, va_list args)
+static int	ft_vprintf(const char *format, va_list args)
 {
 	const char	*fmt;
 	t_spec_info	spec;
@@ -40,7 +40,7 @@ int	ft_vprintf(const char *format, va_list args)
 	while (*fmt != '\0')
 	{
 		parse_spec(fmt, &spec);
-		written += put_format(spec, args);
+		written += put_format(&spec, args);
 		written += put_string(spec.end, (spec.next - spec.end));
 		fmt = spec.next;
 	}

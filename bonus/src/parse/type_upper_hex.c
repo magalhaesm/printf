@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 07:05:08 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 13:03:14 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/17 17:50:14 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	spec_upper_hex(t_spec_info *spec)
 {
 	if (spec->sign || spec->space)
 		spec->error = TRUE;
-	spec->code = 'H';
+	spec->code = 'X';
 }

@@ -6,12 +6,17 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:26 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 14:22:55 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:17:17 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parser.h"
 #include "../include/utils.h"
+
+static void	parse_flags(const char **format, t_spec_info *spec);
+static void	parse_width(const char **format, t_spec_info *spec);
+static void	parse_precision(const char **format, t_spec_info *spec);
+static void	parse_type(const char **format, t_spec_info *spec);
 
 void	parse_spec(const char *format, t_spec_info *spec)
 {
@@ -25,13 +30,13 @@ void	parse_spec(const char *format, t_spec_info *spec)
 	spec->next = find_spec(spec->end);
 }
 
-void	parse_flags(const char **format, t_spec_info *spec)
+static void	parse_flags(const char **format, t_spec_info *spec)
 {
 	t_flag	*flags;
 	t_flag	set_flag;
 
 	flags = flag_array();
-	set_flag = flags[(int)**format];
+	set_flag = flags[(unsigned)**format];
 	if (!set_flag)
 		return ;
 	set_flag(spec);
@@ -39,16 +44,13 @@ void	parse_flags(const char **format, t_spec_info *spec)
 	parse_flags(format, spec);
 }
 
-void	parse_width(const char **format, t_spec_info *spec)
+static void	parse_width(const char **format, t_spec_info *spec)
 {
 	if (ft_isdigit(**format))
-	{
-		spec->width = TRUE;
-		spec->width_size = read_nbr(format);
-	}
+		spec->width = read_nbr(format);
 }
 
-void	parse_precision(const char **format, t_spec_info *spec)
+static void	parse_precision(const char **format, t_spec_info *spec)
 {
 	if (**format == '.')
 	{
@@ -58,13 +60,13 @@ void	parse_precision(const char **format, t_spec_info *spec)
 	}
 }
 
-void	parse_type(const char **format, t_spec_info *spec)
+static void	parse_type(const char **format, t_spec_info *spec)
 {
 	t_conv	*types;
 	t_conv	set_type;
 
 	types = type_array();
-	set_type = types[(int)**format];
+	set_type = types[(unsigned)**format];
 	if (!set_type)
 	{
 		spec->error = TRUE;

@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:19 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 11:31:19 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/15 20:30:56 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	left_justify(t_spec_info *spec)
 {
-	if (spec->pad == '0' || spec->left)
+	if (spec->left || spec->pad == '0')
 		spec->error = TRUE;
 	spec->left = TRUE;
 	spec->pad = ' ';

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_unsigned.c                                    :+:      :+:    :+:   */
+/*   out_char.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 07:01:41 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/17 17:23:59 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/17 14:01:31 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/17 14:03:09 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
+#include "../../include/printer.h"
 
-void	spec_unsigned(t_spec_info *spec)
+int	out_char(t_spec_info *spec, va_list args)
 {
-	if (spec->sign || spec->space || spec->alt || spec->pad == '0')
-		spec->error = TRUE;
-	spec->code = 'u';
+	char	chr;
+
+	chr = va_arg(args, int);
+	return (dispatcher(&chr, spec, 1));
 }
