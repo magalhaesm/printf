@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 07:09:07 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 13:05:00 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:22:51 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	spec_percent(t_spec_info *spec)
 {
+	if (spec->pad == '0' || spec->left || spec->space || spec->sign
+		|| spec->prec || spec->width || spec->alt)
+		spec->error = TRUE;
 	spec->code = '%';
-	spec->end = spec->init + 1;
 }

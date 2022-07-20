@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/17 18:16:31 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:33:06 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	put_error(t_spec_info *spec)
 	spec->error = FALSE;
 }
 
-char	*ux_toa(unsigned long nbr, char *nbr_sys)
+char	*uxtoa(unsigned long nbr, char *nbr_sys)
 {
 	char	*str;
 	int		len;
@@ -54,14 +54,19 @@ int	dispatcher(char *string, t_spec_info *spec, int length)
 	written = 0;
 	if (spec->prec)
 		spec->pad_size = spec->prec_size - length;
+	if (spec->prec_size < length)
+		spec->width -= length;
+	else
+		spec->width -= spec->prec_size;
+	spec->width -= spec->prefix_size;
 	if (spec->left)
 	{
 		written += put_prefix(spec);
 		written += put_string(string, length);
-		written += put_width(spec, length);
+		written += put_width(spec);
 		return (written);
 	}
-	written += put_width(spec, length);
+	written += put_width(spec);
 	written += put_prefix(spec);
 	written += put_string(string, length);
 	return (written);
@@ -69,6 +74,8 @@ int	dispatcher(char *string, t_spec_info *spec, int length)
 
 int	has_prefix(t_spec_info *spec)
 {
+	if (spec->is_negative)
+		return (1);
 	if (spec->space)
 		return (1);
 	else if (spec->sign)

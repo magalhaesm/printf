@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:19 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 20:30:56 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:50:35 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	left_justify(t_spec_info *spec)
 
 void	sign(t_spec_info *spec)
 {
-	if (spec->space)
+	if (spec->space || spec->sign)
 		spec->error = TRUE;
 	spec->sign = TRUE;
 }
 
 void	space(t_spec_info *spec)
 {
-	if (spec->sign)
+	if (spec->sign || spec->space)
 		spec->error = TRUE;
 	spec->space = TRUE;
 }

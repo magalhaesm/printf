@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   out_unsigned.c                                     :+:      :+:    :+:   */
+/*   out_percent.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 08:49:59 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/18 10:29:41 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/20 18:15:24 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
-int	out_unsigned(t_spec_info *spec, va_list args)
+int	out_percent(t_spec_info *spec, va_list args)
 {
-	unsigned int	nbr;
-	char			*u_nbr;
-	int				written;
-
-	nbr = va_arg(args, unsigned int);
-	u_nbr = uxtoa(nbr, DECIMAL);
-	written = dispatcher(u_nbr, spec, ft_strlen(u_nbr));
-	free(u_nbr);
-	return (written);
+	(void) args;
+	spec->prefix_size = 1;
+	return (put_string(&spec->code, 1));
 }

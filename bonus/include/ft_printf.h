@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/17 16:56:04 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:47:11 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef enum e_bool {
 	FALSE = 0
 }	t_bool;
 
-// TODO: remover pad e subtituir pad_size por pad
 typedef struct s_spec_info {
 	char		code;
 	char		pad;
@@ -33,11 +32,12 @@ typedef struct s_spec_info {
 	t_bool		alt;
 	t_bool		prec;
 	t_bool		error;
-	t_bool		is_positive;
+	t_bool		is_negative;
 	int			width;
 	int			prec_size;
 	int			pad_size;
 	int			prefix_size;
+	char		*hex_prefix;
 	const char	*init;
 	const char	*end;
 	const char	*next;
