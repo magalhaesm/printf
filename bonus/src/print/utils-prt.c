@@ -6,18 +6,12 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 16:33:06 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 21:50:15 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 #include "../../include/printer.h"
-
-void	put_error(t_spec_info *spec)
-{
-	write(STDERR_FILENO, "[format error]", 14);
-	spec->error = FALSE;
-}
 
 char	*uxtoa(unsigned long nbr, char *nbr_sys)
 {

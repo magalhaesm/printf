@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 20:19:15 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 22:39:19 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,12 @@ int	put_width(t_spec_info *spec)
 
 int	put_format(t_spec_info *spec, va_list args)
 {
-	int	written;
+	t_out	*types;
+	t_out	out_type;
 
-	written = 0;
-	if (spec->code == 'c')
-		written = out_char(spec, args);
-	else if (spec->code == 's')
-		written = out_string(spec, args);
-	else if (spec->code == 'p')
-		written = out_pointer(spec, args);
-	else if (spec->code == 'd')
-		written = out_decimal(spec, args);
-	else if (spec->code == 'i')
-		written = out_decimal(spec, args);
-	else if (spec->code == 'u')
-		written = out_unsigned(spec, args);
-	else if (spec->code == 'x')
-		written = out_hex(spec, args);
-	else if (spec->code == 'X')
-		written = out_hex(spec, args);
-	else if (spec->code == '%')
-		written = out_percent(spec, args);
-	return (written);
+	types = conversion_array();
+	out_type = types[(unsigned)spec->code];
+	if (!out_type)
+		return (0);
+	return (out_type(spec, args));
 }

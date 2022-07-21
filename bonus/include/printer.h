@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 10:53:56 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 22:07:31 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define LOWER_HEX "0123456789abcdef"
 # define UPPER_HEX "0123456789ABCDEF"
 
+typedef int	(*t_out)(t_spec_info *, va_list);
+
+t_out	*conversion_array(void);
+void	init_printer(void);
 int		put_string(const char *string, int length);
 int		put_format(t_spec_info *spec, va_list args);
 void	put_error(t_spec_info *spec);
