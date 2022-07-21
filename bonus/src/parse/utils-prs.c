@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 10:59:54 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 21:22:32 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	init_parser(void)
 	types['s'] = spec_string;
 	types['p'] = spec_pointer;
 	types['d'] = spec_decimal;
-	types['i'] = spec_integer;
+	types['i'] = spec_decimal;
 	types['u'] = spec_unsigned;
-	types['x'] = spec_lower_hex;
-	types['X'] = spec_upper_hex;
+	types['x'] = spec_hex;
+	types['X'] = spec_hex;
 	types['%'] = spec_percent;
 }
 

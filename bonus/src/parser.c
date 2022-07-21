@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:26 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 20:21:48 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 21:07:51 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ static void	parse_type(const char **format, t_spec_info *spec)
 		spec->error = TRUE;
 		return ;
 	}
+	spec->code = **format;
 	set_type(spec);
 }

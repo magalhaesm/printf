@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 07:01:41 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 12:41:53 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/20 21:09:08 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	spec_unsigned(t_spec_info *spec)
 {
 	if (spec->sign || spec->space || spec->alt)
 		spec->error = TRUE;
-	spec->code = 'u';
 }

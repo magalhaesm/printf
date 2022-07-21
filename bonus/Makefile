@@ -10,8 +10,8 @@ PRT	= print
 
 SRCS	= $(addprefix $(SRC)/, ft_printf.c parser.c printer.c utils.c)
 PRS_SRC	= $(addprefix $(SRC)/$(PRS)/, flags.c type_char.c type_string.c \
-			type_pointer.c type_decimal.c type_integer.c type_unsigned.c \
-			type_lower_hex.c  type_upper_hex.c type_percent.c utils-prs.c)
+			type_pointer.c type_decimal.c type_unsigned.c type_hex.c \
+			type_percent.c utils-prs.c)
 PRT_SRC	= $(addprefix $(SRC)/$(PRT)/, out_char.c out_string.c out_pointer.c \
 			out_decimal.c out_unsigned.c out_hex.c out_percent.c utils-prt.c)
 

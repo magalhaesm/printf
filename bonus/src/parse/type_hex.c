@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_integer.c                                     :+:      :+:    :+:   */
+/*   type_hex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 07:01:05 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/15 13:04:23 by mdias-ma         ###   ########.fr       */
+/*   Created: 2022/07/13 07:04:27 by mdias-ma          #+#    #+#             */
+/*   Updated: 2022/07/20 21:16:28 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 
-void	spec_integer(t_spec_info *spec)
+void	spec_hex(t_spec_info *spec)
 {
-	if (spec->alt || (spec->pad == '0' && spec->prec))
+	if (spec->sign || spec->space)
 		spec->error = TRUE;
-	spec->code = 'i';
+	if (spec->code == 'X')
+		spec->hex_prefix = "0X";
 }
