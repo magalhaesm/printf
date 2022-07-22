@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/22 15:04:05 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:01:12 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-# include "../../libft/libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_bool {
 	TRUE = 1,
@@ -38,7 +38,6 @@ typedef struct s_spec_info {
 	int			pad_size;
 	int			prefix_size;
 	char		*hex_prefix;
-	const char	*init;
 	const char	*end;
 	const char	*next;
 }	t_spec_info;

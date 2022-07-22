@@ -1,6 +1,6 @@
 NAME	= libftprintf.a
 
-LIBFT_DIR = ../libft
+LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC	= src
@@ -23,6 +23,8 @@ CFLAGS	= -g -Wall -Wextra -Werror
 RM			= rm -f
 
 all:	$(NAME)
+
+bonus:	$(NAME)
 
 $(NAME):	$(LIBFT) $(SRC_OBJ) $(PRS_OBJ) $(PRT_OBJ)
 
@@ -56,4 +58,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re
