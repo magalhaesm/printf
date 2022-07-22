@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:35:18 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 21:10:36 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 00:37:54 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef void	(*t_conv)(t_spec_info *);
 t_flag	*flag_array(void);
 t_conv	*type_array(void);
 void	init_parser(void);
-void	clean_spec(t_spec_info *spec);
+void	clean_info(t_spec_info *spec);
 int		read_nbr(const char **format);
 void	left_justify(t_spec_info *spec);
 void	sign(t_spec_info *spec);

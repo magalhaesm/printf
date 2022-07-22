@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 22:39:19 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:04:41 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	put_padding(t_spec_info *spec)
 
 	written = 0;
 	while (spec->pad_size-- > 0)
-	{
-		written++;
-		write(STDOUT_FILENO, "0", 1);
-	}
+		written += put_string(ZERO, 1);
 	return (written);
 }
 
@@ -38,11 +35,11 @@ int	put_prefix(t_spec_info *spec)
 
 	written = 0;
 	if (spec->is_negative)
-		written += put_string("-", 1);
+		written += put_string(MINUS, 1);
 	else if (spec->space)
-		written += put_string(" ", 1);
+		written += put_string(SPACE, 1);
 	else if (spec->sign)
-		written += put_string("+", 1);
+		written += put_string(PLUS, 1);
 	else if (spec->alt)
 		written += put_string(spec->hex_prefix, 2);
 	if (spec->pad == '0')
@@ -63,10 +60,7 @@ int	put_width(t_spec_info *spec)
 		return (written);
 	}
 	while (spec->width-- > 0)
-	{
-		written++;
-		write(STDOUT_FILENO, " ", 1);
-	}
+		written += put_string(SPACE, 1);
 	return (written);
 }
 

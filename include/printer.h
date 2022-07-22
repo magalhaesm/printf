@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 22:07:31 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:04:28 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define PRINTER_H
 
 # include "ft_printf.h"
+
+# define PLUS "+"
+# define ZERO "0"
+# define MINUS "-"
+# define SPACE " "
 
 # define DECIMAL "0123456789"
 # define LOWER_HEX "0123456789abcdef"
@@ -25,7 +30,6 @@ t_out	*conversion_array(void);
 void	init_printer(void);
 int		put_string(const char *string, int length);
 int		put_format(t_spec_info *spec, va_list args);
-void	put_error(t_spec_info *spec);
 int		put_prefix(t_spec_info *spec);
 int		put_padding(t_spec_info *spec);
 int		put_width(t_spec_info *spec);

@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:26 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/22 19:01:33 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 00:38:01 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	parse_type(const char **format, t_spec_info *spec);
 void	parse_spec(const char *format, t_spec_info *spec)
 {
 	format++;
-	clean_spec(spec);
+	clean_info(spec);
 	parse_flags(&format, spec);
 	parse_width(&format, spec);
 	parse_precision(&format, spec);
