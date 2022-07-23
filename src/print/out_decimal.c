@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:35 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 22:41:21 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:49:41 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	out_decimal(t_spec_info *spec, va_list args)
 	if (nbr < 0)
 	{
 		spec->is_negative = TRUE;
+		spec->prefix_size = 1;
 		nbr *= (-1);
 	}
-	spec->prefix_size = has_prefix(spec);
 	decimal = uxtoa(nbr, DECIMAL);
 	written = dispatcher(decimal, spec, ft_strlen(decimal));
 	free(decimal);

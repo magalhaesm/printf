@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils-prs.c                                        :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 21:22:32 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:30:50 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,9 @@ t_flag	*flag_array(void)
 	return (array);
 }
 
-t_conv	*type_array(void)
-{
-	static t_conv	array[128] = {NULL};
-
-	return (array);
-}
-
 void	init_parser(void)
 {
 	t_flag	*flags;
-	t_conv	*types;
 
 	flags = flag_array();
 	flags['-'] = left_justify;
@@ -37,26 +29,17 @@ void	init_parser(void)
 	flags[' '] = space;
 	flags['#'] = hash;
 	flags['0'] = left_pad;
-	types = type_array();
-	types['c'] = spec_char;
-	types['s'] = spec_string;
-	types['p'] = spec_pointer;
-	types['d'] = spec_decimal;
-	types['i'] = spec_decimal;
-	types['u'] = spec_unsigned;
-	types['x'] = spec_hex;
-	types['X'] = spec_hex;
-	types['%'] = spec_percent;
 }
 
-void	clean_spec(t_spec_info *spec)
+void	clean_info(t_spec_info *spec)
 {
 	spec->pad = ' ';
+	spec->pad_size = 0;
 	spec->left = FALSE;
 	spec->sign = FALSE;
 	spec->space = FALSE;
 	spec->alt = FALSE;
-	spec->width = FALSE;
+	spec->width = 0;
 	spec->prec = FALSE;
 	spec->prec_size = 0;
 	spec->prefix_size = 0;

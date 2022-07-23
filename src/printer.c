@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/22 20:04:41 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:09:00 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	put_format(t_spec_info *spec, va_list args)
 	types = conversion_array();
 	out_type = types[(unsigned)spec->code];
 	if (!out_type)
-		return (0);
+		return (put_string(spec->init, (spec->end - spec->init)));
 	return (out_type(spec, args));
 }

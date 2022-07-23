@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils-prt.c                                        :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 21:50:15 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:49:55 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,4 @@ int	dispatcher(char *string, t_spec_info *spec, int length)
 	written += put_prefix(spec);
 	written += put_string(string, length);
 	return (written);
-}
-
-int	has_prefix(t_spec_info *spec)
-{
-	if (spec->is_negative)
-		return (1);
-	if (spec->space)
-		return (1);
-	else if (spec->sign)
-		return (1);
-	else if (spec->alt)
-		return (2);
-	return (0);
 }

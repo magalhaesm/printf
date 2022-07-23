@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/22 19:51:14 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:02:29 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_spec_info {
 	int			pad_size;
 	int			prefix_size;
 	char		*hex_prefix;
+	const char	*init;
 	const char	*end;
 	const char	*next;
 }	t_spec_info;

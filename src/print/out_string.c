@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/21 10:58:15 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 19:30:06 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int	out_string(t_spec_info *spec, va_list args)
 		return (put_string(string, 6));
 	}
 	strlen = ft_strlen(string);
-	if (spec->error && !spec->space)
-		return (put_string(string, strlen));
 	if (!strlen && spec->prec)
 		return (put_string("", 0));
-	if (spec->space)
+	if (spec->space && !spec->width)
 		spec->space = FALSE;
 	if (spec->left)
 		return (dispatcher(string, spec, strlen));

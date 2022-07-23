@@ -6,14 +6,13 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:42:36 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 22:08:21 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:35:22 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include "../include/parser.h"
 #include "../include/printer.h"
-#include "../include/utils.h"
 
 static int	ft_vprintf(const char *format, va_list args);
 

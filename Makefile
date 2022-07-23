@@ -8,12 +8,10 @@ OBJ			= obj
 PRS			= parse
 PRT			= print
 
-SRCS		= $(addprefix $(SRC)/, ft_printf.c parser.c printer.c utils.c)
-PRS_SRC		= $(addprefix $(SRC)/$(PRS)/, flags.c type_char.c type_string.c \
-			type_pointer.c type_decimal.c type_unsigned.c type_hex.c \
-			type_percent.c utils-prs.c)
+SRCS		= $(addprefix $(SRC)/, ft_printf.c parser.c printer.c)
+PRS_SRC		= $(addprefix $(SRC)/$(PRS)/, flags.c parse_utils.c)
 PRT_SRC		= $(addprefix $(SRC)/$(PRT)/, types.c out_char.c out_string.c out_pointer.c \
-			out_decimal.c out_unsigned.c out_hex.c out_percent.c utils-prt.c)
+			out_decimal.c out_unsigned.c out_hex.c out_percent.c print_utils.c)
 
 SRC_OBJ		= $(subst $(SRC), $(OBJ), $(SRCS:.c=.o))
 PRS_OBJ		= $(subst $(SRC)/$(PRS), $(OBJ), $(PRS_SRC:.c=.o))
@@ -23,6 +21,8 @@ CFLAGS		= -g -Wall -Wextra -Werror
 RM			= rm -f
 
 all:		$(NAME)
+
+bonus:		$(NAME)
 
 $(NAME):	$(LIBFT) $(SRC_OBJ) $(PRS_OBJ) $(PRT_OBJ)
 
