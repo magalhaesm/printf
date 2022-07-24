@@ -6,14 +6,14 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 18:49:55 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:57:12 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
-char	*uxtoa(unsigned long nbr, char *nbr_sys)
+char	*itoa_base(unsigned long nbr, char *nbr_sys)
 {
 	char	*str;
 	int		len;

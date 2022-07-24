@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:40 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 18:46:22 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:56:33 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	out_pointer(t_spec_info *spec, va_list args)
 		hex = "(nil)";
 		return (dispatcher(hex, spec, ft_strlen(hex)));
 	}
-	hex = uxtoa(address, LOWER_HEX);
+	hex = itoa_base(address, LOWER_HEX);
 	if (!hex)
 		return (0);
 	spec->alt = TRUE;

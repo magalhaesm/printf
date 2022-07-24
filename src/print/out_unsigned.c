@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/18 08:49:59 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:56:56 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	out_unsigned(t_spec_info *spec, va_list args)
 	int				written;
 
 	nbr = va_arg(args, unsigned int);
-	u_nbr = uxtoa(nbr, DECIMAL);
+	u_nbr = itoa_base(nbr, DECIMAL);
 	written = dispatcher(u_nbr, spec, ft_strlen(u_nbr));
 	free(u_nbr);
 	return (written);

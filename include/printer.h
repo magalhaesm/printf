@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/22 20:04:28 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:56:22 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		out_decimal(t_spec_info *spec, va_list args);
 int		out_unsigned(t_spec_info *spec, va_list args);
 int		out_hex(t_spec_info *spec, va_list args);
 int		out_percent(t_spec_info *spec, va_list args);
-char	*uxtoa(unsigned long nbr, char *nbr_sys);
+char	*itoa_base(unsigned long nbr, char *nbr_sys);
 int		nbr_len(unsigned long n, unsigned long base);
 int		has_prefix(t_spec_info *spec);
 
