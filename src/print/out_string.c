@@ -6,36 +6,65 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/02 09:47:22 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:39:36 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
-// XXX: Flags proibidas: ' ' '+' '#'
-// permitidas: '-' '0' largura precisão
+static int	print_null(t_param *spec);
+static int	justfify_string(t_param *spec, char *string, int strlen);
+
 int	out_string(t_param *spec, va_list args)
 {
 	char	*string;
 	int		strlen;
+	int		written;
 
+	written = 0;
 	string = va_arg(args, char *);
-	if (!string)
-	{
-		string = "(null)";
-		return (put_string(string, 6));
-	}
+	if (string == NULL)
+		return (print_null(spec));
 	strlen = ft_strlen(string);
-	if (!strlen && spec->prec)
-		return (put_string("", 0));
-	if (spec->space && !spec->width)
-		spec->space = FALSE;
-	if (spec->left)
-		return (dispatcher(string, spec, strlen));
-	if (spec->prec && spec->prec_size < strlen)
-		strlen = spec->prec_size;
+	if (spec->precision != -1 && spec->precision < strlen)
+		strlen = spec->precision;
+	spec->width -= strlen;
+	written += justfify_string(spec, string, strlen);
+	return (written);
+}
+
+static int	justfify_string(t_param *spec, char *string, int strlen)
+{
+	int		written;
+
+	written = 0;
+	if (spec->flags[LEFT])
+	{
+		written += put_string(string, strlen);
+		written += put_padding(spec);
+	}
 	else
-		spec->prec = FALSE;
-	return (dispatcher(string, spec, strlen));
+	{
+		written += put_padding(spec);
+		written += put_string(string, strlen);
+	}
+	return (written);
+}
+
+static int	print_null(t_param *spec)
+{
+	char	*string;
+	int		strlen;
+	int		written;
+
+	written = 0;
+	string = "(null)";
+	strlen = 6;
+	spec->width -= strlen;
+	if (spec->precision == -1 || spec->precision >= strlen)
+		written += justfify_string(spec, string, strlen);
+	else
+		written += put_string("", 0);
+	return (written);
 }

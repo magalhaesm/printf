@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 14:04:34 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:11:30 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int right_justify(t_param *spec, char *string, int strlen)
 
 	written = 0;
 	spec->width -= (strlen + spec->precision + spec->prefix_size);
+	// TODO: ignorar zero. Pode ficar melhor
+	// if (spec->precision == -1) não tem precisão
 	if (!spec->flags[ZERO])
 	{
 		spec->pad = ' ';
