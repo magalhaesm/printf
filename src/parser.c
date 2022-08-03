@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:26 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/02 15:52:08 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:52:43 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	parse_flags(const char **format, t_param *spec);
 static void	parse_width(const char **format, t_param *spec);
 static void	parse_precision(const char **format, t_param *spec);
-// void	validate_args(t_param *spec);
 
 void	parse_spec(const char *format, t_param *spec)
 {
@@ -24,19 +23,10 @@ void	parse_spec(const char *format, t_param *spec)
 	parse_flags(&format, spec);
 	parse_width(&format, spec);
 	parse_precision(&format, spec);
-	// validate_args(spec);
 	spec->code = *format;
 	spec->end = format + 1;
 	spec->next = find_spec(spec->end);
 }
-
-// void	validate_args(t_param *spec)
-// {
-// 	if (spec->flags[LEFT] == TRUE)
-// 		spec->flags[PADDING] = FALSE;
-// 	if (spec->flags[PLUS] == TRUE)
-// 		spec->flags[SPACE] = FALSE;
-// }
 
 static void	parse_flags(const char **format, t_param *spec)
 {
@@ -63,8 +53,7 @@ static void	parse_precision(const char **format, t_param *spec)
 	if (**format == '.')
 	{
 		(*format)++;
-		spec->flags[PADDING] = FALSE;
-		// spec->flags[PRECISION] = TRUE;
+		spec->flags[ZERO] = FALSE;
 		spec->precision = read_nbr(format);
 	}
 }

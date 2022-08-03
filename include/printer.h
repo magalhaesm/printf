@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/02 09:55:22 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:11:51 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 # define PRINTER_H
 
 # include "ft_printf.h"
-
-// # define PLUS "+"
-// # define ZERO "0"
-// # define MINUS "-"
-// # define SPACE " "
 
 # define DECIMAL "0123456789"
 # define LOWER_HEX "0123456789abcdef"
@@ -46,5 +41,7 @@ int		out_percent(t_param *spec, va_list args);
 char	*itoa_base(unsigned long nbr, char *nbr_sys);
 int		nbr_len(unsigned long n, unsigned long base);
 int		has_prefix(t_param *spec);
+int		left_justify(t_param *spec, char *string, int strlen);
+int		right_justify(t_param *spec, char *string, int strlen);
 
 #endif

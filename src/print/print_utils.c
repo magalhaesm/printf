@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/02 09:47:45 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:04:34 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,50 @@ int	nbr_len(unsigned long n, unsigned long base)
 		return (1);
 	n /= base;
 	return (nbr_len(n, base) + 1);
+}
+
+int left_justify(t_param *spec, char *string, int strlen)
+{
+	int		written;
+	int		temp;
+
+	written = 0;
+	if (spec->prefix[0])
+		written += put_string(spec->prefix, spec->prefix_size);
+	spec->width -= (strlen + spec->precision + spec->prefix_size);
+	spec->pad = '0';
+	if (spec->precision > 0)
+	{
+		temp = spec->width;
+		spec->width = spec->precision;
+		written += put_padding(spec);
+		spec->width = temp;
+	}
+	spec->pad = ' ';
+	written += put_string(string, strlen);
+	written += put_padding(spec);
+	return (written);
+}
+
+int right_justify(t_param *spec, char *string, int strlen)
+{
+	int		written;
+
+	written = 0;
+	spec->width -= (strlen + spec->precision + spec->prefix_size);
+	if (!spec->flags[ZERO])
+	{
+		spec->pad = ' ';
+		written += put_padding(spec);
+	}
+	if (spec->prefix[0])
+		written += put_string(spec->prefix, spec->prefix_size);
+	spec->pad = '0';
+	if (spec->width < spec->precision)
+		spec->width = spec->precision;
+	written += put_padding(spec);
+	written += put_string(string, strlen);
+	return (written);
 }
 
 // XXX: essa função foi uma péssima ideia!!!

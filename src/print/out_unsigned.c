@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/02 09:47:28 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:43:38 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,23 @@
 int	out_unsigned(t_param *spec, va_list args)
 {
 	unsigned int	nbr;
-	char			*u_nbr;
+	char			*string;
 	int				written;
+	int				strlen;
 
+	written = 0;
 	nbr = va_arg(args, unsigned int);
-	u_nbr = itoa_base(nbr, DECIMAL);
-	written = dispatcher(u_nbr, spec, ft_strlen(u_nbr));
-	free(u_nbr);
+	string = itoa_base(nbr, DECIMAL);
+	strlen = ft_strlen(string);
+
+	// TODO: set_unsigned_prefix
+	spec->prefix = "";
+	spec->width += spec->prefix_size;
+	spec->precision = 0;
+	if (spec->flags[LEFT])
+		written += left_justify(spec, string, strlen);
+	else
+		written += right_justify(spec, string, strlen);
+	free(string);
 	return (written);
 }
