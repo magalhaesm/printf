@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 18:09:00 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:54:06 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,59 +19,93 @@ int	put_string(const char *string, int length)
 	return (length);
 }
 
-int	put_padding(t_spec_info *spec)
+int	put_padding(t_param *spec)
 {
 	int	written;
 
 	written = 0;
-	while (spec->pad_size-- > 0)
-		written += put_string(ZERO, 1);
-	return (written);
-}
-
-int	put_prefix(t_spec_info *spec)
-{
-	int	written;
-
-	written = 0;
-	if (spec->is_negative)
-		written += put_string(MINUS, 1);
-	else if (spec->space)
-		written += put_string(SPACE, 1);
-	else if (spec->sign)
-		written += put_string(PLUS, 1);
-	else if (spec->alt)
-		written += put_string(spec->hex_prefix, 2);
-	if (spec->pad == '0')
-		written += put_padding(spec);
-	else if (spec->prec)
-		written += put_padding(spec);
-	return (written);
-}
-
-int	put_width(t_spec_info *spec)
-{
-	int	written;
-
-	written = 0;
-	if (spec->pad == '0')
+	while (spec->width > 0)
 	{
-		spec->pad_size = spec->width;
-		return (written);
+		written += put_string(&spec->pad, 1);
+		spec->width--;
 	}
-	while (spec->width-- > 0)
-		written += put_string(SPACE, 1);
 	return (written);
 }
 
-int	put_format(t_spec_info *spec, va_list args)
+// NOTA: definir e aplicar a precisão aqui
+int	put_prefix(t_param *spec)
+{
+	int	written;
+
+	written = 0;
+	if (spec->prefix)
+		written += put_string(spec->prefix, spec->prefix_size);
+	if (spec->pad == '0')
+		written += put_padding(spec);
+	return (written);
+}
+
+
+int	put_width(t_param *spec)
+{
+	int	written;
+
+	written = 0;
+	// if (spec->pad == '0')
+	// {
+	// 	spec->pad_size = spec->width;
+	// 	return (written);
+	// }
+	while (spec->width > 0)
+	{
+		written += put_string(&spec->pad, 1);
+		spec->width--;
+	}
+	return (written);
+}
+
+#include <stdio.h>
+int	debug(t_param *spec)
+// int	put_format(t_param *spec, va_list args)
+{
+	// (void) args;
+	printf("\n\nconversão: %c\n", spec->code);
+	printf("largura: %d\n", spec->width);
+	printf("precisão: %d\n", spec->precision);
+	printf("justicar: %d\n", spec->flags[LEFT]);
+	printf("preencher: %d\n", spec->flags[PADDING]);
+	printf("sinal: %d\n", spec->flags[SIGN]);
+	printf("espaço: %d\n", spec->flags[SPACE]);
+	printf("hash: %d\n", spec->flags[HASH]);
+	printf("prefixo: %s\n", spec->prefix);
+	// for (int i = 0; i < NARGS; i++)
+	// 	printf("flags: %d: %d\n", i, spec->flags[i]);
+	return (0);
+}
+
+int	put_format(t_param *spec, va_list args)
 {
 	t_out	*types;
-	t_out	out_type;
+	t_out	put_conversion;
+	int		written;
 
+	written = 0;
 	types = conversion_array();
-	out_type = types[(unsigned)spec->code];
-	if (!out_type)
+	put_conversion = types[(unsigned)spec->code];
+	if (!put_conversion)
 		return (put_string(spec->init, (spec->end - spec->init)));
-	return (out_type(spec, args));
+	written = put_conversion(spec, args);
+	// debug(spec);
+	return (written);
 }
+// int	put_format(t_param *spec, va_list args)
+// {
+// 	t_out	*types;
+// 	t_out	put_conversion;
+//
+// 	types = conversion_array();
+// 	put_conversion = types[(unsigned)spec->code];
+// 	if (!put_conversion)
+// 		return (put_string(spec->init, (spec->end - spec->init)));
+// 	return (put_conversion(spec, args));
+// }

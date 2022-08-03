@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 18:30:50 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:18:05 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	init_parser(void)
 
 	flags = flag_array();
 	flags['-'] = left_justify;
+	flags['0'] = left_pad;
 	flags['+'] = sign;
 	flags[' '] = space;
 	flags['#'] = hash;
-	flags['0'] = left_pad;
 }
 
-void	clean_info(t_spec_info *spec)
+void	clean_info(t_param *spec)
 {
 	spec->pad = ' ';
 	spec->pad_size = 0;
@@ -41,11 +41,16 @@ void	clean_info(t_spec_info *spec)
 	spec->alt = FALSE;
 	spec->width = 0;
 	spec->prec = FALSE;
+	spec->precision = -1;
 	spec->prec_size = 0;
 	spec->prefix_size = 0;
-	spec->is_negative = FALSE;
-	spec->hex_prefix = "0x";
+	spec->prefix = "";
 	spec->error = FALSE;
+	spec->flags[LEFT] = FALSE;
+	spec->flags[PADDING] = FALSE;
+	spec->flags[SIGN] = FALSE;
+	spec->flags[SPACE] = FALSE;
+	spec->flags[HASH] = FALSE;
 }
 
 int	read_nbr(const char **format)
@@ -59,4 +64,11 @@ int	read_nbr(const char **format)
 		(*format)++;
 	}
 	return (nbr);
+}
+
+const char	*find_spec(const char *format)
+{
+	while (*format != '%' && *format)
+		format++;
+	return (format);
 }

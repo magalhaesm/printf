@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/24 08:42:25 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 15:51:48 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 
 # include "../libft/libft/libft.h"
 
+# define NARGS 5
+
 typedef enum e_bool {
-	TRUE = 1,
-	FALSE = 0
+	FALSE, TRUE
 }	t_bool;
 
-typedef struct s_spec_info {
+typedef enum e_flags {
+	LEFT, PADDING, SIGN, SPACE, HASH
+}	t_flags;
+
+typedef struct s_param {
 	char		code;
 	char		pad;
 	t_bool		left;
@@ -36,12 +41,15 @@ typedef struct s_spec_info {
 	int			width;
 	int			pad_size;
 	int			prec_size;
+	int			precision;
 	int			prefix_size;
+	char		*prefix;
 	char		*hex_prefix;
+	t_bool		flags[NARGS];
 	const char	*init;
 	const char	*end;
 	const char	*next;
-}	t_spec_info;
+}	t_param;
 
 int	ft_printf(const char *format, ...);
 

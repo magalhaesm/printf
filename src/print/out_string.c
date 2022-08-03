@@ -6,14 +6,16 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 19:30:06 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 09:47:22 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
-int	out_string(t_spec_info *spec, va_list args)
+// XXX: Flags proibidas: ' ' '+' '#'
+// permitidas: '-' '0' largura precisão
+int	out_string(t_param *spec, va_list args)
 {
 	char	*string;
 	int		strlen;

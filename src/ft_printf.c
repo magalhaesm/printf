@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:42:36 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 18:35:22 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 09:48:24 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int	ft_printf(const char *format, ...)
 static int	ft_vprintf(const char *format, va_list args)
 {
 	const char	*fmt;
-	t_spec_info	spec;
+	t_param		spec;
 	int			written;
 
+	// REFACTOR: colocar as estes vetores dentro de spec
 	init_parser();
 	init_printer();
 	fmt = find_spec(format);

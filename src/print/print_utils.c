@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/23 20:57:12 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/02 09:47:45 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	nbr_len(unsigned long n, unsigned long base)
 	return (nbr_len(n, base) + 1);
 }
 
-int	dispatcher(char *string, t_spec_info *spec, int length)
+// XXX: essa função foi uma péssima ideia!!!
+int	dispatcher(char *string, t_param *spec, int length)
 {
 	int	written;
 
