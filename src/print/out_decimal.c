@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:35 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 14:08:28 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:41:38 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	out_decimal(t_param *spec, va_list args)
 	set_signed_prefix(spec, &nbr);
 	string = itoa_base(nbr, DECIMAL);
 	if (!nbr && !spec->precision)
-		string[0] = '\0';
+		string[0] = 0;
 	strlen = ft_strlen(string);
 	set_precision(spec, strlen);
 	if (spec->flags[LEFT])
