@@ -6,12 +6,15 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 14:31:08 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 18:54:16 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include "../include/printer.h"
+
+static int	left_justify(t_param *spec, char *string, int strlen);
+static int	right_justify(t_param *spec, char *string, int strlen);
 
 int	put_string(const char *string, int length)
 {
@@ -19,17 +22,16 @@ int	put_string(const char *string, int length)
 	return (length);
 }
 
-int	put_padding(t_param *spec)
+int	put_format(t_param *spec, va_list args)
 {
-	int	written;
+	t_out	*types;
+	t_out	put_conversion;
 
-	written = 0;
-	while (spec->width > 0)
-	{
-		written += put_string(&spec->pad, 1);
-		spec->width--;
-	}
-	return (written);
+	types = conversion_array();
+	put_conversion = types[(unsigned)spec->code];
+	if (!put_conversion)
+		return (put_string(spec->init, (spec->end - spec->init)));
+	return (put_conversion(spec, args));
 }
 
 int	put_number_justified(t_param *spec, char *string, int strlen)
@@ -44,14 +46,46 @@ int	put_number_justified(t_param *spec, char *string, int strlen)
 	return (written);
 }
 
-int	put_format(t_param *spec, va_list args)
+static int	left_justify(t_param *spec, char *string, int strlen)
 {
-	t_out	*types;
-	t_out	put_conversion;
+	int		written;
+	int		temp;
 
-	types = conversion_array();
-	put_conversion = types[(unsigned)spec->code];
-	if (!put_conversion)
-		return (put_string(spec->init, (spec->end - spec->init)));
-	return (put_conversion(spec, args));
+	written = 0;
+	if (spec->prefix[0])
+		written += put_string(spec->prefix, spec->prefix_len);
+	spec->width -= (strlen + spec->precision + spec->prefix_len);
+	spec->pad = '0';
+	if (spec->precision > 0)
+	{
+		temp = spec->width;
+		spec->width = spec->precision;
+		written += put_padding(spec);
+		spec->width = temp;
+	}
+	spec->pad = ' ';
+	written += put_string(string, strlen);
+	written += put_padding(spec);
+	return (written);
+}
+
+static int	right_justify(t_param *spec, char *string, int strlen)
+{
+	int		written;
+
+	written = 0;
+	spec->width -= (strlen + spec->precision + spec->prefix_len);
+	if (!spec->flags[ZERO])
+	{
+		spec->pad = ' ';
+		written += put_padding(spec);
+	}
+	if (spec->prefix[0])
+		written += put_string(spec->prefix, spec->prefix_len);
+	spec->pad = '0';
+	if (spec->width < spec->precision)
+		spec->width = spec->precision;
+	written += put_padding(spec);
+	written += put_string(string, strlen);
+	return (written);
 }
