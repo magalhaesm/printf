@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 13:46:47 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 22:50:01 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,10 @@ void	init_parser(void)
 void	clean_info(t_param *spec)
 {
 	spec->pad = ' ';
-	spec->pad_size = 0; // XXX
-	spec->left = FALSE; // XXX
-	spec->sign = FALSE; // XXX
-	spec->space = FALSE; // XXX
-	spec->alt = FALSE; // XXX
 	spec->width = 0;
-	spec->prec = FALSE; // XXX
 	spec->precision = -1;
-	spec->prec_size = 0; // XXX
 	spec->prefix_size = 0;
 	spec->prefix = "";
-	spec->error = FALSE; // XXX
 	spec->flags[LEFT] = FALSE;
 	spec->flags[ZERO] = FALSE;
 	spec->flags[SIGN] = FALSE;

@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:31 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 22:37:11 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 22:40:44 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	out_char(t_param *spec, va_list args)
 	chr = va_arg(args, int);
 	spec->width -= 1;
 	if (!spec->flags[LEFT])
-		written += put_width(spec);
+		written += put_padding(spec);
 	written += put_string(&chr, 1);
-	written += put_width(spec);
+	written += put_padding(spec);
 	return (written);
 }

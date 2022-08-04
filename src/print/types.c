@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:28:36 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/07/20 21:52:06 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 23:20:37 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,22 @@ void	init_printer(void)
 	types['x'] = out_hex;
 	types['X'] = out_hex;
 	types['%'] = out_percent;
+}
+
+void	set_number_precision(t_param *spec, int strlen)
+{
+	if (spec->precision < strlen)
+		spec->precision = 0;
+	else
+		spec->precision -= strlen;
+}
+
+void	set_unsigned_prefix(t_param *spec)
+{
+	if (spec->code == 'x')
+		spec->prefix = "0x";
+	else if (spec->code == 'X')
+		spec->prefix = "0X";
+	else
+		spec->prefix = "";
 }
