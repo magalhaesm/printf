@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 20:39:36 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/03 21:48:25 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/printer.h"
 
 static int	print_null(t_param *spec);
-static int	justfify_string(t_param *spec, char *string, int strlen);
+static int	justify_string(t_param *spec, char *string, int strlen);
 
 int	out_string(t_param *spec, va_list args)
 {
@@ -30,11 +30,11 @@ int	out_string(t_param *spec, va_list args)
 	if (spec->precision != -1 && spec->precision < strlen)
 		strlen = spec->precision;
 	spec->width -= strlen;
-	written += justfify_string(spec, string, strlen);
+	written += justify_string(spec, string, strlen);
 	return (written);
 }
 
-static int	justfify_string(t_param *spec, char *string, int strlen)
+static int	justify_string(t_param *spec, char *string, int strlen)
 {
 	int		written;
 
@@ -63,7 +63,7 @@ static int	print_null(t_param *spec)
 	strlen = 6;
 	spec->width -= strlen;
 	if (spec->precision == -1 || spec->precision >= strlen)
-		written += justfify_string(spec, string, strlen);
+		written += justify_string(spec, string, strlen);
 	else
 		written += put_string("", 0);
 	return (written);
