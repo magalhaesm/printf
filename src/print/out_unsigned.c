@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 09:42:03 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:24:37 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/printer.h"
 
 static char	*to_string(t_param *spec, unsigned int nbr);
-static void	set_unsigned_prefix(t_param *spec);
+static void	set_unsigned_prefix(t_param *spec, unsigned long *nbr);
 
 int	out_unsigned(t_param *spec, va_list args)
 {
@@ -30,8 +30,7 @@ int	out_unsigned(t_param *spec, va_list args)
 		string[0] = 0;
 	strlen = ft_strlen(string);
 	set_number_precision(spec, strlen);
-	if (spec->prefix_size && nbr > 0)
-		set_unsigned_prefix(spec);
+	set_unsigned_prefix(spec, &nbr);
 	written += put_number(spec, string, strlen);
 	free(string);
 	return (written);
@@ -50,10 +49,16 @@ static char	*to_string(t_param *spec, unsigned int nbr)
 	return (string);
 }
 
-static void	set_unsigned_prefix(t_param *spec)
+static void	set_unsigned_prefix(t_param *spec, unsigned long *nbr)
 {
-	if (spec->code == 'x')
-		spec->prefix = "0x";
-	else if (spec->code == 'X')
-		spec->prefix = "0X";
+	if (spec->flags[HASH] && *nbr > 0)
+	{
+		if (spec->code == 'x')
+			spec->prefix = "0x";
+		else if (spec->code == 'X')
+			spec->prefix = "0X";
+		spec->prefix_len = 2;
+	}
+	else
+		spec->prefix = "";
 }

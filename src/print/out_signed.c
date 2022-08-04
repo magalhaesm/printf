@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:35 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 09:48:09 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:24:32 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	set_signed_prefix(t_param *spec, long *nbr)
 	if (*nbr < 0)
 	{
 		spec->prefix = "-";
-		spec->prefix_size = 1;
+		spec->prefix_len = 1;
 		*nbr *= (-1);
 	}
 }

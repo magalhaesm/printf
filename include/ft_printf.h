@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 00:38:30 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:24:24 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_bool {
 typedef enum e_flags {
 	LEFT,
 	ZERO,
-	SIGN,
+	PLUS,
 	SPACE,
 	HASH
 }	t_flags;
@@ -38,7 +38,7 @@ typedef struct s_param {
 	int			width;
 	int			precision;
 	char		*prefix;
-	int			prefix_size;
+	int			prefix_len;
 	const char	*init;
 	const char	*end;
 	const char	*next;

@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 16:54:11 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 22:50:01 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:25:58 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_parser(void)
 	flags = flag_array();
 	flags['-'] = left;
 	flags['0'] = padding;
-	flags['+'] = sign;
+	flags['+'] = showsign;
 	flags[' '] = space;
 	flags['#'] = hash;
 }
@@ -36,11 +36,11 @@ void	clean_info(t_param *spec)
 	spec->pad = ' ';
 	spec->width = 0;
 	spec->precision = -1;
-	spec->prefix_size = 0;
+	spec->prefix_len = 0;
 	spec->prefix = "";
 	spec->flags[LEFT] = FALSE;
 	spec->flags[ZERO] = FALSE;
-	spec->flags[SIGN] = FALSE;
+	spec->flags[PLUS] = FALSE;
 	spec->flags[SPACE] = FALSE;
 	spec->flags[HASH] = FALSE;
 }

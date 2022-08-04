@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 09:28:18 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:24:35 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	left_justify(t_param *spec, char *string, int strlen)
 
 	written = 0;
 	if (spec->prefix[0])
-		written += put_string(spec->prefix, spec->prefix_size);
-	spec->width -= (strlen + spec->precision + spec->prefix_size);
+		written += put_string(spec->prefix, spec->prefix_len);
+	spec->width -= (strlen + spec->precision + spec->prefix_len);
 	spec->pad = '0';
 	if (spec->precision > 0)
 	{
@@ -77,14 +77,14 @@ int	right_justify(t_param *spec, char *string, int strlen)
 	int		written;
 
 	written = 0;
-	spec->width -= (strlen + spec->precision + spec->prefix_size);
+	spec->width -= (strlen + spec->precision + spec->prefix_len);
 	if (!spec->flags[ZERO])
 	{
 		spec->pad = ' ';
 		written += put_padding(spec);
 	}
 	if (spec->prefix[0])
-		written += put_string(spec->prefix, spec->prefix_size);
+		written += put_string(spec->prefix, spec->prefix_len);
 	spec->pad = '0';
 	if (spec->width < spec->precision)
 		spec->width = spec->precision;
