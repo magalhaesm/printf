@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:40 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 23:19:43 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:30:03 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	print_nil(t_param *spec)
 	written = 0;
 	string = "(nil)";
 	strlen = 5;
-	// TODO: revisar isso!
 	spec->width += (spec->prefix_size - 1);
 	written += put_number(spec, string, strlen);
 	return (written);

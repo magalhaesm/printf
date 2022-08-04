@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   out_decimal.c                                      :+:      :+:    :+:   */
+/*   out_signed.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:35 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 23:25:51 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:48:09 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	set_signed_prefix(t_param *spec, long *nbr);
 
-int	out_decimal(t_param *spec, va_list args)
+int	out_signed(t_param *spec, va_list args)
 {
 	long	nbr;
 	char	*string;
@@ -26,7 +26,7 @@ int	out_decimal(t_param *spec, va_list args)
 	nbr = va_arg(args, int);
 	set_signed_prefix(spec, &nbr);
 	string = ft_itoa_base(nbr, DECIMAL);
-	if (!nbr && !spec->precision)
+	if (nbr == 0 && spec->precision == 0)
 		string[0] = 0;
 	strlen = ft_strlen(string);
 	set_number_precision(spec, strlen);

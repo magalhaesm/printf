@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:31:58 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 23:27:14 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:28:18 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,15 @@ int	nbrlen(unsigned long n, unsigned long base)
 	return (nbrlen(n, base) + 1);
 }
 
-int left_justify(t_param *spec, char *string, int strlen)
+void	set_number_precision(t_param *spec, int strlen)
+{
+	if (spec->precision < strlen)
+		spec->precision = 0;
+	else
+		spec->precision -= strlen;
+}
+
+int	left_justify(t_param *spec, char *string, int strlen)
 {
 	int		written;
 	int		temp;
@@ -64,7 +72,7 @@ int left_justify(t_param *spec, char *string, int strlen)
 	return (written);
 }
 
-int right_justify(t_param *spec, char *string, int strlen)
+int	right_justify(t_param *spec, char *string, int strlen)
 {
 	int		written;
 
