@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 23:07:19 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:31:08 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	put_padding(t_param *spec)
 	return (written);
 }
 
-int	put_number(t_param *spec, char *string, int strlen)
+int	put_number_justified(t_param *spec, char *string, int strlen)
 {
 	int	written;
 

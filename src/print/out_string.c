@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 13:17:15 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:25:33 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/printer.h"
 
 static int	print_null(t_param *spec);
-static int	justify_string(t_param *spec, char *string, int strlen);
+static int	put_string_justified(t_param *spec, char *string, int strlen);
 
 int	out_string(t_param *spec, va_list args)
 {
@@ -30,11 +30,11 @@ int	out_string(t_param *spec, va_list args)
 	if (spec->precision != -1 && spec->precision < strlen)
 		strlen = spec->precision;
 	spec->width -= strlen;
-	written += justify_string(spec, string, strlen);
+	written += put_string_justified(spec, string, strlen);
 	return (written);
 }
 
-static int	justify_string(t_param *spec, char *string, int strlen)
+static int	put_string_justified(t_param *spec, char *string, int strlen)
 {
 	int		written;
 
@@ -52,19 +52,19 @@ static int	justify_string(t_param *spec, char *string, int strlen)
 
 static int	print_null(t_param *spec)
 {
-	char	*null_str;
+	char	*null;
 	int		strlen;
 	int		written;
 
 	written = 0;
-	null_str = "(null)";
+	null = "(null)";
 	strlen = 6;
 	if (spec->precision == -1 || spec->precision >= strlen)
 	{
 		spec->width -= strlen;
-		written += justify_string(spec, null_str, strlen);
+		written += put_string_justified(spec, null, strlen);
 	}
 	else
-		written += justify_string(spec, "", 0);
+		written += put_string_justified(spec, "", 0);
 	return (written);
 }

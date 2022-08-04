@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:40 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 13:24:40 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:28:31 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,19 @@ int	out_pointer(t_param *spec, va_list args)
 	set_number_precision(spec, strlen);
 	spec->prefix = "0x";
 	spec->prefix_len = 2;
-	written += put_number(spec, string, strlen);
+	written += put_number_justified(spec, string, strlen);
 	free(string);
 	return (written);
 }
 
 static int	print_nil(t_param *spec)
 {
-	char	*string;
-	int		strlen;
+	char	*nil;
 	int		written;
 
 	written = 0;
-	string = "(nil)";
-	strlen = 5;
+	nil = "(nil)";
 	spec->width += (spec->prefix_len - 1);
-	written += put_number(spec, string, strlen);
+	written += put_number_justified(spec, nil, 5);
 	return (written);
 }

@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 13:24:37 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:27:41 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	out_unsigned(t_param *spec, va_list args)
 	strlen = ft_strlen(string);
 	set_number_precision(spec, strlen);
 	set_unsigned_prefix(spec, &nbr);
-	written += put_number(spec, string, strlen);
+	written += put_number_justified(spec, string, strlen);
 	free(string);
 	return (written);
 }
