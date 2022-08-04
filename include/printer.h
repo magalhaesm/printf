@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 14:32:11 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:07:22 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int		put_format(t_param *spec, va_list args);
 int		put_padding(t_param *spec);
 int		put_number_justified(t_param *spec, char *string, int strlen);
 void	set_number_precision(t_param *spec, int strlen);
-int		left_justify(t_param *spec, char *string, int strlen);
-int		right_justify(t_param *spec, char *string, int strlen);
 
 int		out_char(t_param *spec, va_list args);
 int		out_string(t_param *spec, va_list args);

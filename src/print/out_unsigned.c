@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 14:27:41 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:18:52 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,15 @@ static void	set_unsigned_prefix(t_param *spec, unsigned long *nbr)
 	if (spec->flags[HASH] && *nbr > 0)
 	{
 		if (spec->code == 'x')
+		{
 			spec->prefix = "0x";
+			spec->prefix_len = 2;
+		}
 		else if (spec->code == 'X')
+		{
 			spec->prefix = "0X";
-		spec->prefix_len = 2;
+			spec->prefix_len = 2;
+		}
 	}
 	else
 		spec->prefix = "";
