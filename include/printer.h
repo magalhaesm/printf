@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:22:09 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 18:58:20 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:13:15 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PRINTER_H
 
 # include "ft_printf.h"
+# include "../libft/libft/libft.h"
 
 # define DECIMAL "0123456789"
 # define LOWER_HEX "0123456789abcdef"

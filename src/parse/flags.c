@@ -6,11 +6,11 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:19 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 16:43:10 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:26:42 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "../../include/parser.h"
 
 void	left(t_param *spec)
 {

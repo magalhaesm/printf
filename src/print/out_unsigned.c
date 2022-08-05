@@ -6,11 +6,10 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:13:46 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 17:18:52 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:27:20 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
 static char	*to_string(t_param *spec, unsigned int nbr);
@@ -31,7 +30,7 @@ int	out_unsigned(t_param *spec, va_list args)
 	strlen = ft_strlen(string);
 	set_number_precision(spec, strlen);
 	set_unsigned_prefix(spec, &nbr);
-	written += put_number_justified(spec, string, strlen);
+	written = put_number_justified(spec, string, strlen);
 	free(string);
 	return (written);
 }

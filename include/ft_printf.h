@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:24:21 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 13:24:24 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:12:57 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-
-# include "../libft/libft/libft.h"
 
 typedef enum e_bool {
 	FALSE,

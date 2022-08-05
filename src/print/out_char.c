@@ -6,11 +6,10 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:31 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 22:40:44 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:27:04 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
 #include "../../include/printer.h"
 
 int	out_char(t_param *spec, va_list args)

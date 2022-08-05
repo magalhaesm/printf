@@ -6,11 +6,10 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/04 18:54:16 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:27:33 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
 #include "../include/printer.h"
 
 static int	left_justify(t_param *spec, char *string, int strlen);
