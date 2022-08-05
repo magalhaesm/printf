@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:01:40 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 12:27:11 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:44:18 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	out_pointer(t_param *spec, va_list args)
 
 	written = 0;
 	nbr = va_arg(args, unsigned long);
-	if (!nbr)
+	if (nbr == 0)
 		return (print_nil(spec));
 	string = ft_itoa_base(nbr, LOWER_HEX);
 	strlen = ft_strlen(string);

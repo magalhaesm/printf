@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 17:26:03 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/05 12:27:33 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:46:47 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	put_format(t_param *spec, va_list args)
 
 	types = conversion_array();
 	put_conversion = types[(unsigned)spec->code];
-	if (!put_conversion)
+	if (put_conversion == NULL)
 		return (put_string(spec->init, (spec->end - spec->init)));
 	return (put_conversion(spec, args));
 }
@@ -74,7 +74,7 @@ static int	right_justify(t_param *spec, char *string, int strlen)
 
 	written = 0;
 	spec->width -= (strlen + spec->precision + spec->prefix_len);
-	if (!spec->flags[ZERO])
+	if (spec->flags[ZERO] == FALSE)
 	{
 		spec->pad = ' ';
 		written += put_padding(spec);

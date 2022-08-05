@@ -6,7 +6,7 @@
 /*   By: mdias-ma <mdias-ma@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 21:36:26 by mdias-ma          #+#    #+#             */
-/*   Updated: 2022/08/03 11:52:43 by mdias-ma         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:46:24 by mdias-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	parse_flags(const char **format, t_param *spec)
 
 	flags = flag_array();
 	set_flag = flags[(unsigned)**format];
-	if (!set_flag)
+	if (set_flag == NULL)
 		return ;
 	set_flag(spec);
 	(*format)++;
